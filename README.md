@@ -1,5 +1,8 @@
 # unit-test-java-junit
 
+[![CI](https://github.com/estefafdez/unit-test-java-junit/actions/workflows/ci.yml/badge.svg)](https://github.com/estefafdez/unit-test-java-junit/actions/workflows/ci.yml)
+![Coverage](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Festefafdez%2Funit-test-java-junit%2Fbadges%2Fcoverage.json)
+
 Example of a simple project with unit tests using Java and [JUnit 4](https://junit.org/junit4/). The tests cover a small calculator class (`Calculadora`) with add, subtract, multiply and divide.
 
 ## Requirements
@@ -17,7 +20,7 @@ Main code and tests share the `src` folder. The tests live in the `tests` packag
 
 ## Code coverage
 
-`mvn test` also generates a [JaCoCo](https://www.jacoco.org/jacoco/) report. Open `target/site/jacoco/index.html` to see which lines and branches the tests cover. CI uploads the same report as the `jacoco-report` artifact.
+`mvn test` also generates a [JaCoCo](https://www.jacoco.org/jacoco/) report. Open `target/site/jacoco/index.html` to see which lines and branches the tests cover. CI uploads the same report as the `jacoco-report` artifact, posts the test results as a comment on each pull request and updates the coverage badge above (line coverage) on every push to `master`.
 
 ## Project structure
 
