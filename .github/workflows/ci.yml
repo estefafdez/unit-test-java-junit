@@ -9,6 +9,10 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -17,3 +21,11 @@ jobs:
           java-version: '17'
           cache: maven
       - run: mvn -B test
+
+      # Fork PRs get a read-only token, so only publish for branches of this repo.
+      - name: Publish test results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always() && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+        with:
+          files: target/surefire-reports/*.xml
+          comment_title: Test Results
