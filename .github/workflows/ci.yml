@@ -17,3 +17,9 @@ jobs:
           java-version: '17'
           cache: maven
       - run: mvn -B test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: jacoco-report
+          path: target/site/jacoco
+          if-no-files-found: ignore
